@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # DOLT Version 1.0
 
 A modern, full-stack Next.js website with glassmorphism effects and smooth animations.
@@ -63,3 +64,7 @@ yarn dev
 ## VSCode Setup
 
 This project includes VSCode settings for optimal development experience with Tailwind CSS IntelliSense and TypeScript support.
+=======
+# website_v1.0
+website
+>>>>>>> a3781414f2b8ef079adb5f82ea2f90e13d193d46
