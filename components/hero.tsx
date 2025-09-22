@@ -93,11 +93,11 @@ export default function Hero() {
 
   return (
     <div ref={container} className="relative h-screen overflow-hidden">
-      <Header />
+      
 
       {/* Top-left Logo */}
       <div className="absolute top-6 left-6 z-50">
-        <Image src="/logo.png" alt="Logo" width={48} height={48} />
+        <Image src="/logo/C8_Logo.png" alt="Logo" width={48} height={48} />
       </div>
 
       {/* Top-right controls */}
@@ -203,6 +203,7 @@ export default function Hero() {
           </div>
         </motion.div>
       </motion.div>
+      <Header startAtBottom />
     </div>
   )
 }

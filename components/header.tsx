@@ -4,7 +4,12 @@ import Image from "next/image"
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 
-export default function Header() {
+interface HeaderProps {
+  startAtBottom?: boolean
+}
+
+export default function Header({ startAtBottom = false }: HeaderProps) 
+ {
   const [language, setLanguage] = useState("en")
   const [isScrolled, setIsScrolled] = useState(false)
 
@@ -21,36 +26,40 @@ export default function Header() {
     },
   }
 
-  const t = content[language]
+const t = content[language as "en" | "es"];
 
-  useEffect(() => {
-    let ticking = false
+ const shouldAnimate = !startAtBottom;
 
-    const handleScroll = () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          const scrollPosition = window.scrollY
-          const heroHeight = window.innerHeight
-          setIsScrolled(scrollPosition > heroHeight * 0.6)
-          ticking = false
-        })
-        ticking = true
-      }
+useEffect(() => {
+  if (!shouldAnimate) return;
+
+  let ticking = false;
+
+  const handleScroll = () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        const scrollPosition = window.scrollY;
+        const heroHeight = window.innerHeight;
+        setIsScrolled(scrollPosition > heroHeight * 0.1);
+        ticking = false;
+      });
+      ticking = true;
     }
+  };
 
-    window.addEventListener("scroll", handleScroll, { passive: true })
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+  window.addEventListener("scroll", handleScroll, { passive: true });
+  return () => window.removeEventListener("scroll", handleScroll);
+}, [shouldAnimate]);
 
   return (
-    <header
-      className={`fixed top-6 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-700 ease-out ${
-        isScrolled ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-8 pointer-events-none"
-      }`}
-      style={{
-        willChange: isScrolled ? "auto" : "transform, opacity",
-      }}
-    >
+ <header
+  className={`fixed left-1/2 transform -translate-x-1/2 z-50 transition-all duration-700 ease-out ${
+    startAtBottom ? "bottom-6 opacity-100 translate-y-0" : `${isScrolled ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-8 pointer-events-none"} top-6`
+  }`}
+  style={{ willChange: "transform, opacity" }}
+>
+
+
       <div className="bg-black/20 backdrop-blur-md border border-orange-500/20 rounded-full px-8 py-4 shadow-2xl shadow-orange-500/10">
         <div className="flex justify-between items-center gap-8">
           <Link href="/" className="flex items-center">
