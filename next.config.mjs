@@ -7,8 +7,14 @@ const nextConfig = {
     ignoreBuildErrors: false,
   },
   images: {
-    domains: ['localhost'],
-    unoptimized: false,
+    remotePatterns: [
+    {
+      protocol: 'https',
+      hostname: 'example.com',
+      port: '',
+      pathname: '/**',
+    },
+  ],
   },
   experimental: {
     optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],

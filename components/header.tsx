@@ -64,7 +64,7 @@ useEffect(() => {
         <div className="flex justify-between items-center gap-8">
           <Link href="/" className="flex items-center">
             <Image
-              src="/images/dolt-logo.jpg"
+              src="/images/dolt-logo.png"
               alt="DOLT Logo"
               width={80}
               height={30}

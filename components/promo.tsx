@@ -5,7 +5,7 @@ import { useScroll, useTransform, motion, useSpring } from "framer-motion"
 import { useRef } from "react"
 
 export default function Section() {
-  const container = useRef()
+  const container = useRef<HTMLDivElement | null>(null)
   const { scrollYProgress } = useScroll({
     target: container,
     offset: ["start end", "end start"],
@@ -27,12 +27,20 @@ export default function Section() {
       className="relative flex items-center justify-center h-screen overflow-hidden"
       style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}
     >
-      <div className="fixed top-[-10vh] left-0 h-[120vh] w-full">
+      {/* Background */}
+      <div className="absolute top-0 left-0 w-full h-full">
         <motion.div style={{ y, scale, opacity }} className="relative w-full h-full will-change-transform">
-          <Image src="/images/spiral-circles.jpg" fill alt="Abstract spiral circles" style={{ objectFit: "cover" }} />
+          <Image
+            src="/images/spiral-circles.jpg"
+            fill
+            alt=""
+            priority
+            style={{ objectFit: "cover" }}
+          />
         </motion.div>
       </div>
 
+      {/* Title */}
       <motion.h3
         initial={{ opacity: 0, x: 20 }}
         whileInView={{ opacity: 1, x: 0 }}
@@ -42,6 +50,7 @@ export default function Section() {
         Anatomy of Possibility
       </motion.h3>
 
+      {/* Paragraph */}
       <motion.p
         initial={{ opacity: 0, x: 20 }}
         whileInView={{ opacity: 1, x: 0 }}
