@@ -3,6 +3,7 @@
 import { useEffect } from "react"
 import Lenis from "@studio-freight/lenis"
 import Hero from "@/components/hero"
+import WhoAreWe from "@/components/whowarewe"
 import SearchServices from "@/components/search-services"
 import Features from "@/components/features"
 import Testimonials from "@/components/testimonials"
@@ -39,6 +40,7 @@ export default function Home() {
     <main className="relative">
       <Hero />
       <div className="relative z-10 bg-black">
+        <WhoAreWe />
         <SearchServices />
         <Features />
         <Testimonials />
