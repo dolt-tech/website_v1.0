@@ -1,7 +1,7 @@
 "use client"
 import { motion } from "framer-motion"
-import { Card, CardContent } from "@/components/ui/card"
 import { Brain, Wifi, MessageCircle, DollarSign } from "lucide-react"
+import CardSwap, { Card } from '@/components/CardSwap';
 
 const features = [
   {
@@ -32,45 +32,52 @@ export default function Features() {
   return (
     <section className="py-20 px-6 gradient-bg">
       <div className="max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-orange-500">
-            Technology that <span className="text-orange-400">revolutionizes</span> maintenance
-          </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            We combine artificial intelligence, Internet of Things and human expertise to offer the best maintenance
-            service in LATAM.
-          </p>
-        </motion.div>
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          {/* Left side: Header */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-left"
+          >
+            <h2 className="text-5xl md:text-6xl font-bold mb-6 text-orange-500">
+              The Technology   <span className="text-orange-400">BEHIND</span><br></br> Our Service
+            </h2>
+            <p className="text-xl text-gray-300 max-w-md">
+              By integrating artificial intelligence, IoT enabled monitoring, and skilled technicians, we deliver predictive, efficient, 
+              and cost-saving maintenance solutions tailored for LATAM
+            </p>
+          </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {features.map((feature, index) => (
-            <motion.div
-              key={feature.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ scale: 1.05 }}
+          {/* Right side: CardSwap Animation */}
+          <div style={{ height: '350px', position: 'relative' }}>
+            <CardSwap
+              width={600}
+              height={500}
+              cardDistance={200}
+              verticalDistance={100}
+              delay={5000}
+              pauseOnHover={false}
+              skewAmount={6}
+              easing="elastic"
             >
-              <Card className="glassmorphism border-orange-500/20 hover:border-orange-500/50 transition-all duration-300 h-full hover:shadow-lg hover:shadow-orange-500/10 group">
-                <CardContent className="p-6 text-center">
-                  <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-orange-600 to-orange-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <feature.icon className="w-8 h-8 text-black" />
+              {features.map((feature, index) => (
+                <Card key={feature.title} className="glassmorphism border-orange-500/20">
+                  <div className="p-6 text-center h-full flex flex-col justify-center">
+                    <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-orange-600 to-orange-500 rounded-full flex items-center justify-center">
+                      <feature.icon className="w-8 h-8 text-black" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-orange-500 mb-3">
+                      {feature.title}
+                    </h3>
+                    <p className="text-gray-300 leading-relaxed">
+                      {feature.description}
+                    </p>
                   </div>
-                  <h3 className="text-xl font-semibold text-orange-500 mb-3 group-hover:text-orange-400 transition-colors duration-300">
-                    {feature.title}
-                  </h3>
-                  <p className="text-gray-300 leading-relaxed group-hover:text-gray-200 transition-colors duration-300">
-                    {feature.description}
-                  </p>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
+                </Card>
+              ))}
+            </CardSwap>
+          </div>
         </div>
       </div>
     </section>

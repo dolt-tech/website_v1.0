@@ -1,0 +1,41 @@
+.card-swap-container {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transform: translate(5%, 20%);
+  transform-origin: bottom right;
+  perspective: 900px;
+  overflow: visible;
+}
+
+.card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 25px;
+  border: 2px solid transparent; /* Set transparent border to avoid layout shift */
+  background: rgba(4, 3, 3, 0.9); /* Semi-transparent white for glassmorphism */
+  backdrop-filter: blur(10px); /* 10px blur for glassmorphic effect */
+  background-clip: padding-box; /* Ensure background doesn't bleed into border */
+  box-shadow: 
+    0 0 10px rgba(209, 74, 1, 0.91), /* Orange neon glow */
+    inset 0 0 2px rgba(205, 72, 1, 1); /* Subtle inner glow */
+
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  /* Neon gradient border using pseudo-element */
+
+}
+
+
+@media (max-width: 768px) {
+  .card-swap-container {
+    transform: scale(0.75) translate(25%, 25%);
+  }
+}
+
+@media (max-width: 480px) {
+  .card-swap-container {
+    transform: scale(0.55) translate(25%, 25%);
+  }
+}

@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   title: "DOLT - Redefining Maintenance with Smart Technology",
   description: "Professional maintenance services powered by IoT and expert technicians for Latin America",
   generator: "Professional Web Development",
+  icons: {
+    icon: '/images/dolt-logo.png', // Path to favicon
+  },
 }
 
 export default function RootLayout({

@@ -97,7 +97,7 @@ export default function Hero() {
 
       {/* Top-left Logo */}
       <div className="absolute top-6 left-6 z-50">
-        <Image src="/logo/C8_Logo.png" alt="Logo" width={48} height={48} />
+        <Image src="/images/dolt-logo.png" alt="Logo" width={48} height={48} />
       </div>
 
       {/* Top-right controls */}
