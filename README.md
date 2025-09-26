@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # DOLT Version 1.0
 
 A modern, full-stack Next.js website with glassmorphism effects and smooth animations.
